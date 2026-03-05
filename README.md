@@ -15,14 +15,22 @@ Obsidian vault structured for SANS SEC504 (*Hacker Tools, Techniques, and Incide
 
 ## Table of Contents
 
-- [Requirements](#requirements)
-- [Vault Structure](#vault-structure)
-- [Installation](#installation)
-- [Templates Overview](#templates-overview)
-- [Naming Conventions](#naming-conventions)
-- [Study Workflow](#study-workflow)
-- [Confidence System](#confidence-system)
-- [Best Practices](#best-practices)
+- [SEC504 — GCIH Study Vault](#sec504--gcih-study-vault)
+  - [Table of Contents](#table-of-contents)
+  - [Requirements](#requirements)
+  - [Vault Structure](#vault-structure)
+  - [Installation](#installation)
+  - [Templates Overview](#templates-overview)
+    - [SEC504-Concept](#sec504-concept)
+    - [SEC504-Cheatsheet](#sec504-cheatsheet)
+    - [SEC504-Book-Notes](#sec504-book-notes)
+  - [Naming Conventions](#naming-conventions)
+  - [Study Workflow](#study-workflow)
+    - [During Reading](#during-reading)
+    - [Before the Exam](#before-the-exam)
+    - [During the Exam](#during-the-exam)
+  - [Confidence System](#confidence-system)
+  - [Best Practices](#best-practices)
 
 ---
 
@@ -38,7 +46,7 @@ Obsidian vault structured for SANS SEC504 (*Hacker Tools, Techniques, and Incide
 ## Vault Structure
 
 ```
-SEC504/
+sec504-obsidian-vault\
 ├── SEC504-Dashboard.md          ← Entry point & study tracker
 ├── SEC504-Master-Index.md       ← Master index (print for exam)
 ├── SEC504-Exam-Strategy.md      ← Exam format, time management & high-priority topics
@@ -55,10 +63,10 @@ SEC504/
 
 ## Installation
 
-1. Copy the `SEC504/` folder into an Obsidian vault
+1. Open the cloned `sec504-obsidian-vault` folder directly as your Obsidian vault *(recommended — preserves git tracking)*, or copy its contents into an existing vault
 2. Install **Templater**: Settings → Community Plugins → Browse → search "Templater" → Install → Enable
-3. Configure Templater: Settings → Templater → Template folder location → `SEC504/Templates`
-4. *(Recommended)* Install **Dataview** the same way for live queries in the Dashboard
+3. Configure Templater: Settings → Templater → Template folder location → `Templates`
+4. *(HIGHLY Recommended)* Install **Dataview** the same way for live queries in the Dashboard
 5. Open `SEC504-Dashboard.md` as the study entry point
 
 > **Important:** Always use *Templater: Open Insert Template Modal* when creating notes from templates — not the built-in Core Templates plugin. The `<% %>` syntax will not execute with the Core plugin.
@@ -95,7 +103,7 @@ Prompts for book number only.
 
 | Note Type | Convention | Example |
 |-----------|-----------|---------|
-| Concept | `Kebab-Case-Name.md` | `ARP-Poisoning.md` |
+| Concept | `Train-Case-Name.md` | `ARP-Poisoning.md` |
 | Cheatsheet | `Tool-Cheatsheet.md` | `Nmap-Cheatsheet.md` |
 | Book notes | `SEC504-Book-N.md` | `SEC504-Book-3.md` |
 
