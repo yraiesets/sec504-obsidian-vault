@@ -13,6 +13,19 @@ Obsidian vault structured for SANS SEC504 (*Hacker Tools, Techniques, and Incide
 
 ---
 
+## Table of Contents
+
+- [Requirements](#requirements)
+- [Vault Structure](#vault-structure)
+- [Installation](#installation)
+- [Templates Overview](#templates-overview)
+- [Naming Conventions](#naming-conventions)
+- [Study Workflow](#study-workflow)
+- [Confidence System](#confidence-system)
+- [Best Practices](#best-practices)
+
+---
+
 ## Requirements
 
 | Plugin | Purpose | Status |
