@@ -1,37 +1,56 @@
----
-status: 🔴 Not Started
----
 <%*
 const book_number = await tp.system.prompt("Book number (1-6)");
+await tp.file.rename("Section-" + book_number);
 _%>
+
 ---
+
 tags:
   - sec504
   - book/<% book_number %>
   - notes
 date_created: <% tp.date.now("YYYY-MM-DD") %>
 status: "🔴 Not Started"
+
 ---
 
 # 📘 SEC504 — Book <% book_number %> Notes
 
 ```dataviewjs
-const file = app.vault.getAbstractFileByPath(dv.current().file.path);
-const content = await app.vault.read(file);
+const filePath = dv.current()?.file?.path ?? app.workspace.getActiveFile()?.path;
+if (!filePath || filePath.startsWith("Templates/")) return;
+const file = app.vault.getAbstractFileByPath(filePath);
+if (!file) return;
 
-const eobrPart = content.split('## End-of-Book Review')[1] || '';
-const sectionPart = (content.split('## Section Notes')[1] || '').split('## End-of-Book Review')[0];
+const updateStatus = async () => {
+  const content = await app.vault.read(file);
+  const EOBR = '## End-of' + '-Book Review';
+  const SEC = '## Section' + ' Notes';
+  const eobrPart = content.split(EOBR)[1] || '';
+  const sectionPart = (content.split(SEC)[1] || '').split(EOBR)[0];
+  const eobrDone = /^- .+\S/m.test(eobrPart);
+  const hasNotes = sectionPart.split('**Key Takeaways:**').slice(1)
+    .some(p => /\S/.test(p.split('**Key Vocabulary')[0].trim()));
+  const hasLabNotes = sectionPart.split('**Lab Notes:**').slice(1)
+    .some(p => /\S/.test(p.split('---')[0].trim()));
+  const newStatus = eobrDone ? '🟢 Complete' : (hasNotes || hasLabNotes) ? '🟡 In Progress' : '🔴 Not Started';
+  const currentStatus = app.metadataCache.getFileCache(file)?.frontmatter?.status;
+  if (currentStatus !== newStatus) {
+    await app.fileManager.processFrontMatter(file, fm => { fm.status = newStatus; });
+  }
+};
 
-const eobrDone = /^- .+\S/m.test(eobrPart);
-const hasNotes = sectionPart.split('**Key Takeaways:**').slice(1)
-  .some(p => /\S/.test(p.split('**Key Vocabulary')[0].trim()));
-const hasLabNotes = sectionPart.split('**Lab Notes:**').slice(1)
-  .some(p => /\S/.test(p.split('---')[0].trim()));
-
-const newStatus = eobrDone ? '🟢 Complete' : (hasNotes || hasLabNotes) ? '🟡 In Progress' : '🔴 Not Started';
-if (dv.current().status !== newStatus) {
-  await app.fileManager.processFrontMatter(file, fm => { fm.status = newStatus; });
-}
+await updateStatus();
+const evtRef = app.vault.on('modify', async (modified) => {
+  if (modified.path === file.path) await updateStatus();
+});
+const observer = new MutationObserver(() => {
+  if (!dv.container.isConnected) {
+    app.vault.offref(evtRef);
+    observer.disconnect();
+  }
+});
+observer.observe(dv.container.parentElement ?? document.body, { childList: true });
 ```
 
 ## Book Overview
@@ -41,7 +60,7 @@ if (dv.current().status !== newStatus) {
 | **Title**    |                          |
 | **Sections** |                          |
 | **Pages**    |                          |
-| **Status**   | `$= dv.current().status` |
+| **Status**   | `$= dv.current()?.status` |
 
 ---
 
