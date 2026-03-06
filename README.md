@@ -67,7 +67,8 @@ sec504-obsidian-vault\
 2. Install **Templater**: Settings → Community Plugins → Browse → search "Templater" → Install → Enable
 3. Configure Templater: Settings → Templater → Template folder location → `Templates`
 4. *(HIGHLY Recommended)* Install **Dataview** the same way for live queries in the Dashboard
-5. Open `SEC504-Dashboard.md` as the study entry point
+5. Configure Dataview : Settings → Dataview → Toggle `Enable Javascript queries` & `Enable inline Javascript queries` (needed to execute DataviewJS queries)
+6. Open `SEC504-Dashboard.md` as the study entry point
 
 > **Important:** Always use *Templater: Open Insert Template Modal* when creating notes from templates — not the built-in Core Templates plugin. The `<% %>` syntax will not execute with the Core plugin.
 
