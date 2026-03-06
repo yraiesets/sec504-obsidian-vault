@@ -1,20 +1,15 @@
-<%*
-const book_number = await tp.system.prompt("Book number (1-6)");
-await tp.file.rename("Section-" + book_number);
-_%>
-
 ---
 
 tags:
   - sec504
-  - book/<% book_number %>
+  - book/4
   - notes
-date_created: <% tp.date.now("YYYY-MM-DD") %>
+date_created: 2026-03-06
 status: "🔴 Not Started"
 
 ---
 
-# 📘 SEC504 — Book <% book_number %> Notes
+# 📘 SEC504 — Book 4 Notes
 
 ```dataviewjs
 const filePath = dv.current()?.file?.path ?? app.workspace.getActiveFile()?.path;
@@ -55,11 +50,11 @@ observer.observe(dv.container.parentElement ?? document.body, { childList: true 
 
 ## Book Overview
 
-|              |                           |
-| ------------ | ------------------------- |
-| **Title**    |                           |
-| **Sections** |                           |
-| **Pages**    |                           |
+|              |                          |
+| ------------ | ------------------------ |
+| **Title**    |                          |
+| **Sections** |                          |
+| **Pages**    |                          |
 | **Status**   | `$= dv.current()?.status` |
 
 ---

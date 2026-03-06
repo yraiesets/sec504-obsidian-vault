@@ -14,14 +14,14 @@ tags:
 
 ## 📚 Course Books
 
-| Book              | Topic | Status | Notes |
-| ----------------- | ----- | ------ | ----- |
-| [[SEC504-Book-1]] |       | 🔴     |       |
-| [[SEC504-Book-2]] |       | 🔴     |       |
-| [[SEC504-Book-3]] |       | 🔴     |       |
-| [[SEC504-Book-4]] |       | 🔴     |       |
-| [[SEC504-Book-5]] |       | 🔴     |       |
-| [[SEC504-Book-6]] |       | 🔴     |       |
+| Book          | Topic | Status                                    | Notes |
+| ------------- | ----- | ----------------------------------------- | ----- |
+| [[Section-1]] |       | `$= dv.page("Section-1")?.status ?? "🔴"` |       |
+| [[Section-2]] |       | `$= dv.page("Section-2")?.status ?? "🔴"` |       |
+| [[Section-3]] |       | `$= dv.page("Section-3")?.status ?? "🔴"` |       |
+| [[Section-4]] |       | `$= dv.page("Section-4")?.status ?? "🔴"` |       |
+| [[Section-5]] |       | `$= dv.page("Section-5")?.status ?? "🔴"` |       |
+| [[Section-6]] |       | `$= dv.page("Section-6")?.status ?? "🔴"` |       |
 
 ---
 
